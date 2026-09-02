@@ -4,62 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etiquetas HTML - Mi Sitio Web</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Demostración de Etiquetas HTML</h1>
-        <p>Esta página muestra el uso de diferentes etiquetas HTML.</p>
-    </header>
-
-    <nav>
-        <a href="index.html">Inicio / Login</a> |
-        <a href="tags.html">Etiquetas HTML</a> |
-        <a href="profile.html">Perfil</a>
+    <nav class="navbar navbar-light site-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Mi Sitio Web</a>
+            <ul class="navbar-nav flex-row flex-wrap justify-content-center">
+                <li class="nav-item mx-2"><a class="nav-link" href="index.html">Inicio / Login</a></li>
+                <li class="nav-item mx-2"><a class="nav-link active" aria-current="page" href="tags.html">Etiquetas HTML</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="profile.html">Perfil</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div>
-        <h2>Texto y párrafos</h2>
-        <p>Este es un párrafo normal creado con la etiqueta <strong>p</strong>.</p>
-        <p>
-            Esta línea termina aquí <br />
-            y esta otra línea comienza después de un salto con la etiqueta <strong>br</strong>.
-        </p>
-        <p>Podemos <strong>resaltar texto importante</strong> usando la etiqueta strong.</p>
-    </div>
+    <header>
+        <h1>Demostración de Etiquetas HTML</h1>
+        <p>Ejemplos de texto, enlaces, imágenes y estructura.</p>
+    </header>
 
-    <div>
-        <h2>Superíndices y subíndices</h2>
-        <p>La fórmula del agua es H<sub>2</sub>O, usando la etiqueta <strong>sub</strong>.</p>
-        <p>Einstein propuso la fórmula E = mc<sup>2</sup>, usando la etiqueta <strong>sup</strong> para elevaciones.</p>
-    </div>
+    <div class="container">
+        <div class="seccion">
+            <h2>Texto y párrafos</h2>
+            <p>Este es un párrafo normal creado con la etiqueta <strong>p</strong>.</p>
+            <p>
+                Esta línea termina aquí <br />
+                y esta otra línea comienza después de un salto con la etiqueta <strong>br</strong>.
+            </p>
+            <p>Podemos <strong>resaltar texto importante</strong> usando la etiqueta strong.</p>
+        </div>
 
-    <div>
-        <h2>Enlaces</h2>
-        <p>Puedes visitar <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">MDN Web Docs</a> para aprender más sobre HTML.</p>
-        <p>También puedes regresar al <a href="index.html">inicio</a>.</p>
-    </div>
+        <div class="seccion">
+            <h2>Superíndices y subíndices</h2>
+            <p>La fórmula del agua es H<sub>2</sub>O, usando la etiqueta <strong>sub</strong>.</p>
+            <p>Einstein propuso la fórmula E = mc<sup>2</sup>, usando la etiqueta <strong>sup</strong>.</p>
+        </div>
 
-    <div>
-        <h2>Imágenes</h2>
-        <p>A continuación se muestra una imagen de un tesla:</p>
-        <img src="./Imagenes/cyber.jpeg" width="500" height="500" alt="Imagen de ejemplo">
-    </div>
+        <div class="seccion">
+            <h2>Enlaces</h2>
+            <p>Puedes visitar <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">MDN Web Docs</a> para aprender más sobre HTML, o volver al <a href="index.html">inicio</a>.</p>
+        </div>
 
-    <div>
-        <h2>Listas</h2>
-        <ul>
-            <li>Elemento de lista sin orden 1</li>
-            <li>Elemento de lista sin orden 2</li>
-        </ul>
-        <ol>
-            <li>Primer paso</li>
-            <li>Segundo paso</li>
-        </ol>
+        <div class="seccion text-center">
+            <h2>Imágenes</h2>
+            <p>Para esta práctica he cambiado la imagen del cybertruck por una imagen del mejor jugador de baloncesto de Europa. <strong>style.css</strong>.</p>
+            <img src="./Imagenes/jean_montero.jpg" alt="Imagen de Jean Montero">
+        </div>
+
+        <div class="seccion">
+            <h2>Listas</h2>
+            <ul>
+                <li>Elemento de lista sin orden 1</li>
+                <li>Elemento de lista sin orden 2</li>
+            </ul>
+            <ol>
+                <li>Primer paso</li>
+                <li>Segundo paso</li>
+            </ol>
+        </div>
+
     </div>
 
     <footer>
-        <p><sub>Práctica de HTML</sub> <sup>&copy;</sup> 2026</p>
+        <p><sub>Práctica de HTML y CSS</sub> <sup>&copy;</sup> 2026</p>
     </footer>
 
 </body>
