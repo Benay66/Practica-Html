@@ -16,46 +16,63 @@
                 <li class="nav-item mx-2"><a class="nav-link active" aria-current="page" href="index.html">Inicio / Login</a></li>
                 <li class="nav-item mx-2"><a class="nav-link" href="tags.html">Etiquetas HTML</a></li>
                 <li class="nav-item mx-2"><a class="nav-link" href="profile.html">Perfil</a></li>
+                <li class="nav-item mx-2"><a class="nav-link" href="formulario.html">Formulario JS</a></li>
             </ul>
         </div>
     </nav>
 
     <header>
         <h1>Mi Sitio Web</h1>
-        <p>Práctica de CSS y Bootstrap</p>
+        <p>Práctica de CSS, Bootstrap y JavaScript</p>
     </header>
 
     <div class="container">
         <div class="login-card">
             <h2 class="text-center mb-3">Iniciar Sesión</h2>
 
-            <!-- Párrafo seleccionado por clase: color compartido con otros párrafos .lead-text -->
             <p class="lead-text">Ingresa tus datos para acceder a tu cuenta. Los campos marcados con <strong>*</strong> son obligatorios.</p>
+            <p class="text-muted small">Credenciales de prueba: <strong>admin</strong> / <strong>1234</strong></p>
 
-            <form>
+            <form id="form-login">
                 <div class="mb-3">
                     <label for="username" class="form-label">Usuario <strong>*</strong></label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu usuario">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu usuario" autocomplete="username">
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña <strong>*</strong></label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña" autocomplete="current-password">
                 </div>
 
-                <button type="submit" class="btn btn-dark w-100">Ingresar</button>
+                <div id="mensaje-error" class="alert alert-danger" style="display: none;" role="alert"></div>
+
+                <button type="submit" class="btn btn-dark w-100" id="btn-login">Ingresar</button>
             </form>
+        </div>
+
+        <!-- Botones de demostración de elementos de JavaScript (Parte 2) -->
+        <div class="seccion text-center">
+            <h3>Demostración de JavaScript</h3>
+            <p class="lead-text">Haz clic en los botones para probar diferentes elementos del lenguaje.</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <button type="button" id="btn-cambiar-titulo" class="btn btn-outline-secondary">Cambiar título (DOM)</button>
+                <button type="button" id="btn-arreglo" class="btn btn-outline-secondary">Mostrar arreglo</button>
+                <button type="button" id="btn-objeto" class="btn btn-outline-secondary">Objetos y clases</button>
+                <button type="button" id="btn-condicionales" class="btn btn-outline-secondary">Condicionales</button>
+                <button type="button" id="btn-bucles" class="btn btn-outline-secondary">Bucles</button>
+            </div>
         </div>
 
         <div class="seccion text-center">
             <p>¿Quieres saber quién soy? Visita mi página de <a href="profile.html">perfil</a>.</p>
+            <p>También puedes probar el <a href="formulario.html">formulario interactivo</a> (Parte 3).</p>
         </div>
-
     </div>
 
     <footer>
         <p><sub>Proyecto académico</sub> <sup>&copy;</sup> 2026</p>
     </footer>
 
+    <script src="./js/script.js"></script>
 </body>
 </html>
