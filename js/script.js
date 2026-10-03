@@ -15,7 +15,7 @@ function mostrarMensaje(texto, tipo = "info") {
   console.log(`[${tipo.toUpperCase()}] ${texto}`);
 }
 
-function validarLogin(event) {
+async function validarLogin(event) {
   event.preventDefault(); 
 
   const usuarioInput = document.getElementById("username");
@@ -40,23 +40,46 @@ function validarLogin(event) {
     return;
   }
 
-  if (usuario === CREDENCIALES.usuario && password === CREDENCIALES.password) {
-    intentosLogin = 0;
-    if (mensajeError) mensajeError.style.display = "none";
-    mostrarMensaje("¡Inicio de sesión correcto! Redirigiendo al perfil...", "success");
-    setTimeout(() => {
-      window.location.href = "profile.html";
-    }, 800);
-  } else {
-    intentosLogin++;
-    const msg = `Credenciales incorrectas. Intento ${intentosLogin}. Usuario correcto: "admin" / Contraseña: "1234"`;
-    if (mensajeError) {
-      mensajeError.textContent = msg;
-      mensajeError.style.display = "block";
+  try {
+    // Petición POST a tu API local ejecutándose en el puerto 3000
+    const respuesta = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: usuario,
+        password: password
+      })
+    });
+
+    const datos = await respuesta.json();
+
+    if (respuesta.ok) {
+      intentosLogin = 0;
+      if (mensajeError) mensajeError.style.display = "none";
+      mostrarMensaje("¡Inicio de sesión correcto! Redirigiendo al perfil...", "success");
+      setTimeout(() => {
+        window.location.href = "profile.html";
+      }, 800);
     } else {
-      mostrarMensaje(msg, "error");
+      intentosLogin++;
+      const msg = datos.message || `Credenciales incorrectas. Intento ${intentosLogin}.`;
+      if (mensajeError) {
+        mensajeError.textContent = msg;
+        mensajeError.style.display = "block";
+      } else {
+        mostrarMensaje(msg, "error");
+      }
+      console.warn("Login fallido en la API. Intentos:", intentosLogin);
     }
-    console.warn("Login fallido. Intentos:", intentosLogin);
+
+  } catch (error) {
+    console.error("Error de conexión con el backend:", error);
+    if (mensajeError) {
+      mensajeError.textContent = "No se pudo conectar con el servidor (Backend apagado o inaccesible).";
+      mensajeError.style.display = "block";
+    }
   }
 }
 
@@ -133,8 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("script.js cargado correctamente.");
 
   // Login form
-  const formLogin = document.querySelector("form");
-  if (formLogin && document.getElementById("username")) {
+  const formLogin = document.getElementById("form-login");
+  if (formLogin) {
     formLogin.addEventListener("submit", validarLogin);
   }
 
