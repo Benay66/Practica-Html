@@ -41,7 +41,6 @@ async function validarLogin(event) {
   }
 
   try {
-    // Petición POST a tu API local ejecutándose en el puerto 3000
     const respuesta = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
@@ -58,9 +57,10 @@ async function validarLogin(event) {
     if (respuesta.ok) {
       intentosLogin = 0;
       if (mensajeError) mensajeError.style.display = "none";
-      mostrarMensaje("¡Inicio de sesión correcto! Redirigiendo al perfil...", "success");
+      const userId = datos.id;
+      mostrarMensaje("¡Inicio de sesión correcto! Redirigiendo al minijuego...", "success");
       setTimeout(() => {
-        window.location.href = "profile.html";
+        window.location.href = `minijuego/index.html?id=${userId}`;
       }, 800);
     } else {
       intentosLogin++;
